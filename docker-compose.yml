@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  love-bot:
+    build: .
+    container_name: love-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Riyadh
+    volumes:
+      - ./state.json:/app/state.json
+    networks:
+      - hs
+
+networks:
+  hs:
+    name: comp_hs
+    external: true
